@@ -54,7 +54,7 @@ namespace RaspApp1
         }
         private async void dispatcherTimer1Hour_Tick(object sender, object e)
         {
-            RootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
+            WeatherRootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
             string icon = String.Format("http://openweathermap.org/img/w/{0}.png", nowWeather.weather[0].icon);
             WeatherImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
             textBlock1.Text = nowWeather.name + " - " + (int)(nowWeather.main.temp - 273.15) + "℃" + " - " + nowWeather.weather[0].description;

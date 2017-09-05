@@ -11,20 +11,23 @@ using System.Threading.Tasks;
  * Getting response from openweathermap.org needs a key, here using
  * d43cb61cf71c6019bca5c8c3ee4913a1
  * which is my private key.
+ * 
+ * If some one is using this class, please goto openweathermap.org
+ * and sign up, to get your own private key, it's free.
 */
 namespace RaspApp1
 {
     public class OpenWeatherMapProxy
     {
-        public async static Task<RootObject> GetWeather(string city, string country)
+        public async static Task<WeatherRootObject> GetWeather(string city, string country)
         {
             var http = new HttpClient();
             var response = await http.GetAsync(GetResponsingUri(city,country));
             var result = await response.Content.ReadAsStringAsync();
-            var serializer = new DataContractJsonSerializer(typeof(RootObject));
+            var serializer = new DataContractJsonSerializer(typeof(WeatherRootObject));
 
             var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(result));
-            var data = (RootObject)serializer.ReadObject(memoryStream);
+            var data = (WeatherRootObject)serializer.ReadObject(memoryStream);
             return data;
         }
         private static string GetResponsingUri(string city,string country)
@@ -120,7 +123,7 @@ namespace RaspApp1
     }
 
     [DataContract]
-    public class RootObject
+    public class WeatherRootObject
     {
         [DataMember]
         public Coord coord { get; set; }

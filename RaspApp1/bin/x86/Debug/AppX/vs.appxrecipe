@@ -28,13 +28,13 @@
     <AppXManifest Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-17T09:22:54.974</Modified>
+      <Modified>2017-08-19T13:16:39.833</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\RaspApp1.exe">
       <PackagePath>entrypoint\RaspApp1.exe</PackagePath>
-      <Modified>2017-08-17T09:22:54.641</Modified>
+      <Modified>2017-08-19T13:16:35.360</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chunho\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -471,7 +471,7 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T09:22:56.000</Modified>
+      <Modified>2017-08-19T13:11:04.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-17T09:20:20.693</Modified>
+      <Modified>2017-08-19T13:16:38.492</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\RaspApp1.exe">
       <PackagePath>RaspApp1.exe</PackagePath>
-      <Modified>2017-08-17T09:22:54.970</Modified>
+      <Modified>2017-08-19T13:16:39.833</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
