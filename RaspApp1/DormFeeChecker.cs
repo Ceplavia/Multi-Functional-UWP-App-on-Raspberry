@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Runtime.Serialization;
-using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Windows.Data.Json;
-using Windows.Networking;
-using Windows.Networking.Sockets;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 using Windows.Storage.Streams;
 
 namespace RaspApp1
 {
-
     public class DormFeeChecker
     {
         private string roomNumber;
@@ -28,16 +23,15 @@ namespace RaspApp1
         }
         public async Task<string> DataUpdate()
         {
-            Tuple<CookieContainer, dynamic> tuple = await GetIdAsync(roomNumber);
-            Dictionary<string, dynamic> dictionary = await GetBalanceAsync(tuple);
-            if (dictionary["success"])
+            Tuple<CookieContainer, string> tuplea = await GetIdAsync(roomNumber);
+            Tuple<string, string> tupleab = await GetBalanceAsync(tuplea);
+            if (tupleab.Item1 == "true")
             {
-                string result = "￥" + dictionary["balance"];
-                return result;
+                return "￥" + tupleab.Item2;
             }
             else return "Offline :(";
         }
-        public async Task<Tuple<CookieContainer, dynamic>> GetIdAsync(string account)
+        public async Task<Tuple<CookieContainer, string>> GetIdAsync(string account)
         {
             string url = "http://10.136.2.5/jnuweb/WebService/JNUService.asmx/Login";
             HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -62,11 +56,13 @@ namespace RaspApp1
             WebResponse response = await httpRequest.GetResponseAsync();
             Stream responseStream = response.GetResponseStream();
             StreamReader streamReader = new StreamReader(responseStream, Encoding.UTF8);
-            //dynamic data = JValue.Parse(streamReader.ReadToEnd());
-            //return new Tuple<CookieContainer, dynamic>(cookieJar, data.d.ResultList[0].customerId.Value);
-            return new Tuple<CookieContainer, dynamic>(cookieJar, dateTime);
+            string jsonString = streamReader.ReadToEnd();
+            Regex regex = new Regex("customerId.{2}([0-9]+)");
+            MatchCollection matches = regex.Matches(jsonString);
+            var data = new Tuple<CookieContainer, string>(cookieJar, matches[0].Groups[1].Value);
+            return data;
         }
-        public async Task<Dictionary<string, dynamic>> GetBalanceAsync(Tuple<CookieContainer, dynamic> loginData)
+        public async Task<Tuple<string, string>> GetBalanceAsync(Tuple<CookieContainer, string> loginData)
         {
             string dateTime;
             string url = "http://10.136.2.5/jnuweb/WebService/JNUService.asmx/GetUserInfo";
@@ -80,27 +76,16 @@ namespace RaspApp1
             httpRequest.Headers["DateTime"] = dateTime;
             httpRequest.CookieContainer = loginData.Item1;
             httpRequest.Headers[HttpRequestHeader.ContentLength] = "0";
+            Stream requestStream = await httpRequest.GetRequestStreamAsync();
             WebResponse response = await httpRequest.GetResponseAsync();
             Stream responseStream = response.GetResponseStream();
-            using (responseStream)
-            {
-                using (StreamReader streamReader = new StreamReader(responseStream, Encoding.UTF8))
-                {
-                    string jsonString = streamReader.ReadToEnd();
-                    var rootObject = JsonObject.Parse(jsonString);
-                    Dictionary<string, dynamic> dict = new Dictionary<string, dynamic>()
-                    {
-                        //{"success",Convert.ToBoolean(data.d.Success.Value)},
-                        {"balance",rootObject},
-                        /*
-                            ！！！！！！！！！！！！！！！！！！！！！！
-                         */
-                    };
-                    return dict;
-                }
-            }
+            StreamReader streamReader = new StreamReader(responseStream, Encoding.UTF8);
+            string jsonString = streamReader.ReadToEnd();
+            Regex regex = new Regex("Success.+(true|false).+账户余额.{14}([0-9.]+)");
+            MatchCollection matches = regex.Matches(jsonString);
+            return new Tuple<string,string>(matches[0].Groups[1].Value,matches[0].Groups[2].Value);
         }
-        public static string GetToken(out string dateTime)
+        public string GetToken(out string dateTime)
         {
             /*
                 GetId.
@@ -108,10 +93,10 @@ namespace RaspApp1
             dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string plainText = "{\"userID\":0,\"tokenTime\":\"" + dateTime + "\"}";
             Crypt crypt = new Crypt();
-            byte[] encryptedText = crypt.Encrypt(StringToByteArray(plainText));
+            byte[] encryptedText = crypt.Encrypt(Encoding.ASCII.GetBytes(plainText));
             return Convert.ToBase64String(encryptedText) + "%0A";
         }
-        private static string GetToken(dynamic id, out string dateTime)
+        public string GetToken(dynamic id, out string dateTime)
         {
             /*
                 GetBalance.
@@ -119,28 +104,20 @@ namespace RaspApp1
             dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string plainText = "{\"userID\":" + id + ",\"tokenTime\":\"" + dateTime + "\"}";
             Crypt crypt = new Crypt();
-            byte[] encryptedText = crypt.Encrypt(StringToByteArray(plainText));
+            byte[] encryptedText = crypt.Encrypt(Encoding.ASCII.GetBytes(plainText));
             return Convert.ToBase64String(encryptedText).Insert(64, "%0A");
-        }
-        public static byte[] StringToByteArray(String hex)
-        {
-            int NumberChars = hex.Length;
-            byte[] bytes = new byte[NumberChars / 2];
-            for (int i = 0; i < NumberChars; i += 2)
-                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
-            return bytes;
         }
     }
     public class Crypt
     {
-        string AES_Key = "436574536f667445454d537973576562";
-        string AES_IV = "1934577290ABCDEF1264147890ACAE45";
+        byte [] AES_Key = StringToByteArray("436574536f667445454d537973576562");
+        byte [] AES_IV = StringToByteArray("1934577290ABCDEF1264147890ACAE45");
         private IBuffer m_iv = null;
         private CryptographicKey m_key;
         public Crypt()
         {
-            IBuffer key = Convert.FromBase64String(AES_Key).AsBuffer();
-            m_iv = Convert.FromBase64String(AES_IV).AsBuffer();
+            IBuffer key = AES_Key.AsBuffer();
+            m_iv = AES_IV.AsBuffer();
             SymmetricKeyAlgorithmProvider provider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
             m_key = provider.CreateSymmetricKey(key);
         }
@@ -150,25 +127,13 @@ namespace RaspApp1
             IBuffer bufferEncrypt = CryptographicEngine.Encrypt(m_key, bufferMessage, m_iv);
             return bufferEncrypt.ToArray();
         }
-
-    }
-    [DataContract]
-    public class D
-    {
-        [DataMember]
-        public string __type { get; set; }
-        [DataMember]
-        public bool success { get; set; }
-        [DataMember]
-        public double balance { get; set; }
-        [DataMember]
-        public string errorMsg { get; set; }
-        [DataMember]
-    }
-    [DataContract]
-    public class FeeRootObject
-    {
-        [DataMember]
-        public D d { get; set; }
+        public static byte[] StringToByteArray(String hex)
+        {
+            int NumberChars = hex.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
+        }
     }
 }

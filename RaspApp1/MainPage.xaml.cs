@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using WeatherNet.Clients;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -43,7 +44,7 @@ namespace RaspApp1
             dispatcherTimer1Sec.Tick += dispatcherTimer1Sec_Tick;
             dispatcherTimer1Hour.Tick += dispatcherTimer1Hour_Tick;
             dispatcherTimer1Sec.Start();
-            dispatcherTimer1Hour.Start();
+            //dispatcherTimer1Hour.Start();
         }
         private void dispatcherTimer1Sec_Tick(object sender, object e)
         {
@@ -137,10 +138,12 @@ namespace RaspApp1
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
-            RootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
+            WeatherRootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
             string icon = String.Format("http://openweathermap.org/img/w/{0}.png", nowWeather.weather[0].icon);
             WeatherImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
             textBlock1.Text = nowWeather.name + " - " + (int)(nowWeather.main.temp - 273.15) + "℃" + " - " + nowWeather.weather[0].description;
+            DormFeeChecker nowDormFee = new DormFeeChecker("t41004");
+            textBlock1_dormFee.Text = await nowDormFee.DataUpdate();
         }
     }
 }
