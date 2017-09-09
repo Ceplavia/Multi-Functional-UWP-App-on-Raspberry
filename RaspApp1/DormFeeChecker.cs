@@ -163,7 +163,6 @@ namespace RaspApp1
         public double balance { get; set; }
         [DataMember]
         public string errorMsg { get; set; }
-        [DataMember]
     }
     [DataContract]
     public class FeeRootObject
