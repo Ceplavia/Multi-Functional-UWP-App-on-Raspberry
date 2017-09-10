@@ -28,13 +28,13 @@
     <AppXManifest Include="E:\VSproject\RaspApp1\RaspApp1\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-01T08:41:47.906</Modified>
+      <Modified>2017-09-10T10:53:59.372</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\ARM\Debug\RaspApp1.exe">
       <PackagePath>entrypoint\RaspApp1.exe</PackagePath>
-      <Modified>2017-08-01T08:41:47.318</Modified>
+      <Modified>2017-09-10T10:53:58.332</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chunho\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -471,7 +471,7 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T09:22:56.000</Modified>
+      <Modified>2017-08-19T13:11:04.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
@@ -500,7 +500,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\ARM\Debug\RaspApp1.xr.xml">
       <PackagePath>RaspApp1.xr.xml</PackagePath>
-      <Modified>2017-08-01T08:40:47.131</Modified>
+      <Modified>2017-09-10T10:53:58.111</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-01T08:41:47.686</Modified>
+      <Modified>2017-09-10T10:53:59.005</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\ARM\Debug\Core\RaspApp1.exe">
       <PackagePath>RaspApp1.exe</PackagePath>
-      <Modified>2017-08-01T08:41:47.903</Modified>
+      <Modified>2017-09-10T10:53:59.368</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

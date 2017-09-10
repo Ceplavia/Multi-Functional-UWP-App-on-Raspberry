@@ -5,9 +5,9 @@
     xmlns:local="using:RaspApp1"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="600">
+    mc:Ignorable="d" Height="768">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="600">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlock_nowHour" HorizontalAlignment="Left" Margin="793,28,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Height="128" Width="128" FontSize="110" FontFamily="Microsoft JhengHei"/>
         <TextBlock x:Name="textBlock_lunarDate" HorizontalAlignment="Left" Margin="784,361,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="30" Width="200" Height="80" FontFamily="Microsoft JhengHei UI"/>
         <Image x:Name="WeatherImage" HorizontalAlignment="Left" Height="64" Margin="201,427,0,0" VerticalAlignment="Top" Width="64"/>

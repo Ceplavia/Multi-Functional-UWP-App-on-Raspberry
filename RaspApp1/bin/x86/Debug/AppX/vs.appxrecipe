@@ -28,13 +28,13 @@
     <AppXManifest Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-09-10T08:26:19.265</Modified>
+      <Modified>2017-09-10T10:14:23.127</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\RaspApp1.exe">
       <PackagePath>entrypoint\RaspApp1.exe</PackagePath>
-      <Modified>2017-09-10T08:26:18.114</Modified>
+      <Modified>2017-09-10T10:14:20.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chunho\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-09-10T08:26:18.887</Modified>
+      <Modified>2017-09-10T10:14:22.656</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\RaspApp1.exe">
       <PackagePath>RaspApp1.exe</PackagePath>
-      <Modified>2017-09-10T08:26:19.262</Modified>
+      <Modified>2017-09-10T10:14:23.121</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,11 @@
+/out:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\intermediate\SgGenerated\\"
+/int:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\intermediate\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\intermediate\PreMergeILTransformed\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\intermediate\TransformedSRWR\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\in\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\in\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\in\\"
+/ref:"C:\Program Files (x86)\MSBuild\Microsoft\.NetNative\x86\ilc\lib\Private\\"
+/ref:"E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\in\WinMetadata\\"
+/ca:System.Private.CoreLib
+"@E:\VSproject\RaspApp1\RaspApp1\obj\x86\Release\ilc\intermediate\PreMergeILTransformed\ComputedSerializationInput.txt"
