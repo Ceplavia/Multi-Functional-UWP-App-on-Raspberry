@@ -127,7 +127,6 @@ namespace RaspApp1
             IBuffer bufferEncrypt = CryptographicEngine.Encrypt(m_key, bufferMessage, m_iv);
             return bufferEncrypt.ToArray();
         }
-<<<<<<< HEAD
 
     }
     [DataContract]
@@ -147,7 +146,6 @@ namespace RaspApp1
     {
         [DataMember]
         public D d { get; set; }
-=======
         public static byte[] StringToByteArray(String hex)
         {
             int NumberChars = hex.Length;
@@ -156,6 +154,5 @@ namespace RaspApp1
                 bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
             return bytes;
         }
->>>>>>> dcaa33a274eb84772cd41e3a8ef5c77b76291bbb
     }
 }

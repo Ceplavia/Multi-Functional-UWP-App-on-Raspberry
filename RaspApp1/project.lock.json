@@ -1,7 +1,8 @@
 {
-  "version": 3,
+  "locked": false,
+  "version": 2,
   "targets": {
-    "UAP,Version=v10.0.10240": {
+    "UAP,Version=v10.0": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -1920,7 +1921,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-arm": {
+    "UAP,Version=v10.0/win10-arm": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -3705,7 +3706,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-arm-aot": {
+    "UAP,Version=v10.0/win10-arm-aot": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -5447,7 +5448,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-x64": {
+    "UAP,Version=v10.0/win10-x64": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -7241,7 +7242,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-x64-aot": {
+    "UAP,Version=v10.0/win10-x64-aot": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -8983,7 +8984,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-x86": {
+    "UAP,Version=v10.0/win10-x86": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -10777,7 +10778,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.10240/win10-x86-aot": {
+    "UAP,Version=v10.0/win10-x86-aot": {
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -16108,57 +16109,6 @@
       "WeatherNet.uwp >= 2.1.2",
       "weather-icons >= 2.0.10"
     ],
-    "UAP,Version=v10.0.10240": []
-  },
-  "packageFolders": {
-    "C:\\Users\\YKW\\.nuget\\packages\\": {}
-  },
-  "project": {
-    "restore": {
-      "projectUniqueName": "C:\\Users\\YKW\\Documents\\GitHub\\Multi-Functional-UWP-App-on-Raspberry\\RaspApp1\\RaspApp1.csproj",
-      "projectName": "RaspApp1",
-      "projectPath": "C:\\Users\\YKW\\Documents\\GitHub\\Multi-Functional-UWP-App-on-Raspberry\\RaspApp1\\RaspApp1.csproj",
-      "projectJsonPath": "C:\\Users\\YKW\\Documents\\GitHub\\Multi-Functional-UWP-App-on-Raspberry\\RaspApp1\\project.json",
-      "packagesPath": "C:\\Users\\YKW\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YKW\\Documents\\GitHub\\Multi-Functional-UWP-App-on-Raspberry\\RaspApp1\\obj\\",
-      "projectStyle": "ProjectJson",
-      "configFilePaths": [
-        "C:\\Users\\YKW\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-      ],
-      "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
-      }
-    },
-    "dependencies": {
-      "Microsoft.Net.Http": "2.2.29",
-      "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-      "weather-icons": "2.0.10",
-      "WeatherNet.uwp": "2.1.2"
-    },
-    "frameworks": {
-      "uap10.0.10240": {}
-    },
-    "runtimes": {
-      "win10-arm": {
-        "#import": []
-      },
-      "win10-arm-aot": {
-        "#import": []
-      },
-      "win10-x64": {
-        "#import": []
-      },
-      "win10-x64-aot": {
-        "#import": []
-      },
-      "win10-x86": {
-        "#import": []
-      },
-      "win10-x86-aot": {
-        "#import": []
-      }
-    }
+    "UAP,Version=v10.0": []
   }
 }
