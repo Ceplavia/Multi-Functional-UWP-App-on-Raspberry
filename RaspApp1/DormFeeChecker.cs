@@ -27,7 +27,7 @@ namespace RaspApp1
             Tuple<string, string> tupleab = await GetBalanceAsync(tuplea);
             if (tupleab.Item1 == "true")
             {
-                return "￥" + tupleab.Item2;
+                return tupleab.Item2;
             }
             else return "Offline :(";
         }

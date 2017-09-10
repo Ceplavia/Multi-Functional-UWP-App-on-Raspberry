@@ -28,13 +28,13 @@
     <AppXManifest Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-09-10T07:14:05.652</Modified>
+      <Modified>2017-09-10T08:26:19.265</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\RaspApp1.exe">
       <PackagePath>entrypoint\RaspApp1.exe</PackagePath>
-      <Modified>2017-09-10T07:14:01.588</Modified>
+      <Modified>2017-09-10T08:26:18.114</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chunho\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -500,7 +500,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\RaspApp1.xr.xml">
       <PackagePath>RaspApp1.xr.xml</PackagePath>
-      <Modified>2017-08-01T08:12:06.297</Modified>
+      <Modified>2017-09-10T08:16:39.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-09-10T07:14:04.651</Modified>
+      <Modified>2017-09-10T08:26:18.887</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\VSproject\RaspApp1\RaspApp1\bin\x86\Debug\Core\RaspApp1.exe">
       <PackagePath>RaspApp1.exe</PackagePath>
-      <Modified>2017-09-10T07:14:05.646</Modified>
+      <Modified>2017-09-10T08:26:19.262</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

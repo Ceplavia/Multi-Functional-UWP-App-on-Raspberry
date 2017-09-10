@@ -16,14 +16,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-
-//“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
-
 namespace RaspApp1
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -31,7 +25,7 @@ namespace RaspApp1
             this.InitializeComponent();
             this.RequestedTheme = ElementTheme.Dark;
             DispatcherTimerSetup();
-
+            DataUpdate();
             
         }
         private void DispatcherTimerSetup()
@@ -47,22 +41,18 @@ namespace RaspApp1
         }
         private void dispatcherTimer1Sec_Tick(object sender, object e)
         {
-            textBlock_nowTime.Text = DateTime.Now.ToString();
+            textBlock_nowHour.Text = DateTime.Now.ToString("HH");
+            textBlock_nowMin.Text = DateTime.Now.ToString("mm");
+            textBlock_nowSec.Text = DateTime.Now.ToString("ss");
+            textBlock_today.Text = DateTime.Now.ToString("MM" + "月" + "dd" + "日");
             textBlock_lunarDate.Text = GetChineseDateTime(DateTime.Now);
             //var result = CurrentWeather.GetByCityNameAsync("Stockholm", "Sweden", "en", "metric");
             //textBlock1.Text = result.ToString();
         }
-        private async void dispatcherTimer1Hour_Tick(object sender, object e)
+        private void dispatcherTimer1Hour_Tick(object sender, object e)
         {
-            WeatherRootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
-            string icon = String.Format("http://openweathermap.org/img/w/{0}.png", nowWeather.weather[0].icon);
-            WeatherImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
-            textBlock1.Text = nowWeather.name + " - " + (int)(nowWeather.main.temp - 273.15) + "℃" + " - " + nowWeather.weather[0].description;
+            DataUpdate();
         }
-
-
-
-
         public static string GetChineseDateTime(DateTime datetime)
         {
             ChineseLunisolarCalendar cCalendar = new ChineseLunisolarCalendar();
@@ -87,7 +77,7 @@ namespace RaspApp1
                     lmonth--;
                 }
             }
-            return string.Concat(GetLunisolarYear(lyear), "年", isleap ? "閏" : string.Empty, GetLunisolarMonth(lmonth), "月", GetLunisolarDay(lday));
+            return string.Concat(GetLunisolarYear(lyear), "年", isleap ? "閏" : string.Empty, "\n" ,GetLunisolarMonth(lmonth), "月", GetLunisolarDay(lday));
         }
         #region 农历年
         private static string[] tinGon = { "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸" };
@@ -134,13 +124,16 @@ namespace RaspApp1
             throw new ArgumentOutOfRangeException("無效日!");
         }
         #endregion
-
-        private async void button_Click(object sender, RoutedEventArgs e)
+        private async void DataUpdate()
         {
-            WeatherRootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Shenzhen", "China");
+            WeatherRootObject nowWeather = await OpenWeatherMapProxy.GetWeather("Guangzhou", "China");
+            DormFeeChecker dormFee = new DormFeeChecker("T41004");
             string icon = String.Format("http://openweathermap.org/img/w/{0}.png", nowWeather.weather[0].icon);
             WeatherImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
-            textBlock1.Text = nowWeather.name + " - " + (int)(nowWeather.main.temp - 273.15) + "℃" + " - " + nowWeather.weather[0].description;
+            textBlock_cityName.Text = nowWeather.name;
+            textBlock_cityTemp.Text = ((int)(nowWeather.main.temp - 273.15)).ToString();
+            textBlock_cityWeather.Text = nowWeather.weather[0].description;
+            textBlock_dormFee.Text = await dormFee.DataUpdate();
         }
     }
 }
