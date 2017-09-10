@@ -7,7 +7,10 @@ First uwp app on raspberry. (Stupidly)Multi-Functional.
 	- Lunar date display
 	- Weather (from openweather.org)
 	- Electricity fee of my dorm display...(half-finished)
-
+- 10/9/2017
+	- Electricity fee auto check done.
+		- Thanks to my roommate @ykydaird13.
+	- Fully operational (?) ~D.VA, ready for combat.~
 
 Will add:  
 
