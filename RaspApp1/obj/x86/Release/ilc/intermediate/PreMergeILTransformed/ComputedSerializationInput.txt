@@ -1,1 +1,0 @@
-"/t:RaspApp1.WeatherRootObject,RaspApp1,json"

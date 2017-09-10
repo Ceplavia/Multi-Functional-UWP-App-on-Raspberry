@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -84,7 +83,7 @@ namespace RaspApp1
             string jsonString = streamReader.ReadToEnd();
             Regex regex = new Regex("Success.+(true|false).+账户余额.{14}([0-9.]+)");
             MatchCollection matches = regex.Matches(jsonString);
-            return new Tuple<string,string>(matches[0].Groups[1].Value,matches[0].Groups[2].Value);
+            return new Tuple<string, string>(matches[0].Groups[1].Value, matches[0].Groups[2].Value);
         }
         public string GetToken(out string dateTime)
         {
@@ -111,8 +110,8 @@ namespace RaspApp1
     }
     public class Crypt
     {
-        byte [] AES_Key = StringToByteArray("436574536f667445454d537973576562");
-        byte [] AES_IV = StringToByteArray("1934577290ABCDEF1264147890ACAE45");
+        byte[] AES_Key = StringToByteArray("436574536f667445454d537973576562");
+        byte[] AES_IV = StringToByteArray("1934577290ABCDEF1264147890ACAE45");
         private IBuffer m_iv = null;
         private CryptographicKey m_key;
         public Crypt()
@@ -128,25 +127,6 @@ namespace RaspApp1
             IBuffer bufferEncrypt = CryptographicEngine.Encrypt(m_key, bufferMessage, m_iv);
             return bufferEncrypt.ToArray();
         }
-
-    }
-    [DataContract]
-    public class D
-    {
-        [DataMember]
-        public string __type { get; set; }
-        [DataMember]
-        public bool success { get; set; }
-        [DataMember]
-        public double balance { get; set; }
-        [DataMember]
-        public string errorMsg { get; set; }
-    }
-    [DataContract]
-    public class FeeRootObject
-    {
-        [DataMember]
-        public D d { get; set; }
         public static byte[] StringToByteArray(String hex)
         {
             int NumberChars = hex.Length;

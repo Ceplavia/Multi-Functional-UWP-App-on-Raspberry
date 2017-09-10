@@ -1,1 +1,0 @@
-C:\Users\YKW\Documents\GitHub\Multi-Functional-UWP-App-on-Raspberry\RaspApp1\RaspApp1.csproj;x86
